@@ -68,5 +68,10 @@ namespace VBAutoCentre
         {
 
         }
+
+        private void authorLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

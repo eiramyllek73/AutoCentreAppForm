@@ -52,9 +52,10 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.tradeAllowanceLabel = new System.Windows.Forms.Label();
             this.amountDueLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.calculateButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.authorLabel = new System.Windows.Forms.Label();
             this.accessoriesGroupBox.SuspendLayout();
             this.exteriorFinishGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -274,43 +275,57 @@
             this.amountDueLabel.TabIndex = 16;
             this.amountDueLabel.Text = "Amount Due:";
             // 
-            // button1
+            // calculateButton
             // 
-            this.button1.Location = new System.Drawing.Point(209, 360);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.calculateButton.Location = new System.Drawing.Point(209, 360);
+            this.calculateButton.Name = "calculateButton";
+            this.calculateButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateButton.TabIndex = 17;
+            this.calculateButton.Text = "&Calculate";
+            this.calculateButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // clearButton
             // 
-            this.button2.Location = new System.Drawing.Point(306, 360);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.clearButton.Location = new System.Drawing.Point(306, 360);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 18;
+            this.clearButton.Text = "C&lear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // exitButton
             // 
-            this.button3.Location = new System.Drawing.Point(403, 360);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.exitButton.Location = new System.Drawing.Point(403, 360);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 19;
+            this.exitButton.Text = "E&xit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // authorLabel
+            // 
+            this.authorLabel.AutoSize = true;
+            this.authorLabel.Font = new System.Drawing.Font("Architect 1", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authorLabel.Location = new System.Drawing.Point(379, 413);
+            this.authorLabel.Name = "authorLabel";
+            this.authorLabel.Size = new System.Drawing.Size(99, 21);
+            this.authorLabel.TabIndex = 20;
+            this.authorLabel.Text = "Kelly McAlpine";
+            this.authorLabel.Click += new System.EventHandler(this.authorLabel_Click);
             // 
             // AutoCentreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 469);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.CancelButton = this.clearButton;
+            this.ClientSize = new System.Drawing.Size(493, 439);
+            this.Controls.Add(this.authorLabel);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.amountDueLabel);
             this.Controls.Add(this.tradeAllowanceLabel);
             this.Controls.Add(this.totalLabel);
@@ -370,9 +385,10 @@
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label tradeAllowanceLabel;
         private System.Windows.Forms.Label amountDueLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button calculateButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label authorLabel;
     }
 }
 
