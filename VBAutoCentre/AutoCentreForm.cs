@@ -29,49 +29,87 @@ namespace VBAutoCentre
 
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void stereoCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void carSalesPriceLabel_Click(object sender, EventArgs e)
+        private void leatherCheckbox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void accessoriesFinishLabel_Click(object sender, EventArgs e)
+        private void computerNavCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void subTotalLabel_Click(object sender, EventArgs e)
+        private void standardFinishRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void totalLabel_Click(object sender, EventArgs e)
+        private void pearlFinishRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void tradeAllowanceLabel_Click(object sender, EventArgs e)
+        private void customDetailRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void carSalesTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void accessoriesTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void authorLabel_Click(object sender, EventArgs e)
+        private void subTotal_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void salesTaxTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tradeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void amountDueTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            //Exit the program
+            this.Close();
+        }
+
+
     }
 }

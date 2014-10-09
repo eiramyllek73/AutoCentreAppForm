@@ -30,21 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoCentreForm));
             this.accessoriesGroupBox = new System.Windows.Forms.GroupBox();
-            this.exteriorFinishGroupBox = new System.Windows.Forms.GroupBox();
-            this.stereoCheckBox = new System.Windows.Forms.CheckBox();
-            this.leatherCheckBox = new System.Windows.Forms.CheckBox();
             this.computerNavCheckBox = new System.Windows.Forms.CheckBox();
-            this.standardFinishRadioButton = new System.Windows.Forms.RadioButton();
-            this.pearlFinishRadioButton = new System.Windows.Forms.RadioButton();
+            this.leatherCheckBox = new System.Windows.Forms.CheckBox();
+            this.stereoCheckBox = new System.Windows.Forms.CheckBox();
+            this.exteriorFinishGroupBox = new System.Windows.Forms.GroupBox();
             this.customDetailRadioButton = new System.Windows.Forms.RadioButton();
+            this.pearlFinishRadioButton = new System.Windows.Forms.RadioButton();
+            this.standardFinishRadioButton = new System.Windows.Forms.RadioButton();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.carSalesTextBox = new System.Windows.Forms.TextBox();
+            this.accessoriesTextBox = new System.Windows.Forms.TextBox();
+            this.subTotalTextBox = new System.Windows.Forms.TextBox();
+            this.salesTaxTextBox = new System.Windows.Forms.TextBox();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.tradeTexBox = new System.Windows.Forms.TextBox();
+            this.amountDueTextBox = new System.Windows.Forms.TextBox();
             this.carSalesPriceLabel = new System.Windows.Forms.Label();
             this.accessoriesFinishLabel = new System.Windows.Forms.Label();
             this.subTotalLabel = new System.Windows.Forms.Label();
@@ -72,6 +72,39 @@
             this.accessoriesGroupBox.TabStop = false;
             this.accessoriesGroupBox.Text = "Accessories";
             // 
+            // computerNavCheckBox
+            // 
+            this.computerNavCheckBox.AutoSize = true;
+            this.computerNavCheckBox.Location = new System.Drawing.Point(7, 104);
+            this.computerNavCheckBox.Name = "computerNavCheckBox";
+            this.computerNavCheckBox.Size = new System.Drawing.Size(125, 17);
+            this.computerNavCheckBox.TabIndex = 2;
+            this.computerNavCheckBox.Text = "Computer &Navigation";
+            this.computerNavCheckBox.UseVisualStyleBackColor = true;
+            this.computerNavCheckBox.CheckedChanged += new System.EventHandler(this.computerNavCheckBox_CheckedChanged);
+            // 
+            // leatherCheckBox
+            // 
+            this.leatherCheckBox.AutoSize = true;
+            this.leatherCheckBox.Location = new System.Drawing.Point(7, 62);
+            this.leatherCheckBox.Name = "leatherCheckBox";
+            this.leatherCheckBox.Size = new System.Drawing.Size(97, 17);
+            this.leatherCheckBox.TabIndex = 1;
+            this.leatherCheckBox.Text = "Leather &Interior";
+            this.leatherCheckBox.UseVisualStyleBackColor = true;
+            this.leatherCheckBox.CheckedChanged += new System.EventHandler(this.leatherCheckbox_CheckedChanged);
+            // 
+            // stereoCheckBox
+            // 
+            this.stereoCheckBox.AutoSize = true;
+            this.stereoCheckBox.Location = new System.Drawing.Point(7, 20);
+            this.stereoCheckBox.Name = "stereoCheckBox";
+            this.stereoCheckBox.Size = new System.Drawing.Size(94, 17);
+            this.stereoCheckBox.TabIndex = 0;
+            this.stereoCheckBox.Text = "&Stereo System";
+            this.stereoCheckBox.UseVisualStyleBackColor = true;
+            this.stereoCheckBox.CheckedChanged += new System.EventHandler(this.stereoCheckBox_CheckedChanged);
+            // 
             // exteriorFinishGroupBox
             // 
             this.exteriorFinishGroupBox.Controls.Add(this.customDetailRadioButton);
@@ -84,47 +117,17 @@
             this.exteriorFinishGroupBox.TabStop = false;
             this.exteriorFinishGroupBox.Text = "Exterior Finish";
             // 
-            // stereoCheckBox
+            // customDetailRadioButton
             // 
-            this.stereoCheckBox.AutoSize = true;
-            this.stereoCheckBox.Location = new System.Drawing.Point(7, 20);
-            this.stereoCheckBox.Name = "stereoCheckBox";
-            this.stereoCheckBox.Size = new System.Drawing.Size(94, 17);
-            this.stereoCheckBox.TabIndex = 0;
-            this.stereoCheckBox.Text = "&Stereo System";
-            this.stereoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // leatherCheckBox
-            // 
-            this.leatherCheckBox.AutoSize = true;
-            this.leatherCheckBox.Location = new System.Drawing.Point(7, 62);
-            this.leatherCheckBox.Name = "leatherCheckBox";
-            this.leatherCheckBox.Size = new System.Drawing.Size(97, 17);
-            this.leatherCheckBox.TabIndex = 1;
-            this.leatherCheckBox.Text = "Leather &Interior";
-            this.leatherCheckBox.UseVisualStyleBackColor = true;
-            this.leatherCheckBox.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // computerNavCheckBox
-            // 
-            this.computerNavCheckBox.AutoSize = true;
-            this.computerNavCheckBox.Location = new System.Drawing.Point(7, 104);
-            this.computerNavCheckBox.Name = "computerNavCheckBox";
-            this.computerNavCheckBox.Size = new System.Drawing.Size(125, 17);
-            this.computerNavCheckBox.TabIndex = 2;
-            this.computerNavCheckBox.Text = "Computer &Navigation";
-            this.computerNavCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // standardFinishRadioButton
-            // 
-            this.standardFinishRadioButton.AutoSize = true;
-            this.standardFinishRadioButton.Location = new System.Drawing.Point(7, 20);
-            this.standardFinishRadioButton.Name = "standardFinishRadioButton";
-            this.standardFinishRadioButton.Size = new System.Drawing.Size(68, 17);
-            this.standardFinishRadioButton.TabIndex = 0;
-            this.standardFinishRadioButton.TabStop = true;
-            this.standardFinishRadioButton.Text = "S&tandard";
-            this.standardFinishRadioButton.UseVisualStyleBackColor = true;
+            this.customDetailRadioButton.AutoSize = true;
+            this.customDetailRadioButton.Location = new System.Drawing.Point(7, 94);
+            this.customDetailRadioButton.Name = "customDetailRadioButton";
+            this.customDetailRadioButton.Size = new System.Drawing.Size(123, 17);
+            this.customDetailRadioButton.TabIndex = 2;
+            this.customDetailRadioButton.TabStop = true;
+            this.customDetailRadioButton.Text = "Customized &Detailing";
+            this.customDetailRadioButton.UseVisualStyleBackColor = true;
+            this.customDetailRadioButton.CheckedChanged += new System.EventHandler(this.customDetailRadioButton_CheckedChanged);
             // 
             // pearlFinishRadioButton
             // 
@@ -136,17 +139,19 @@
             this.pearlFinishRadioButton.TabStop = true;
             this.pearlFinishRadioButton.Text = "&Pearlized";
             this.pearlFinishRadioButton.UseVisualStyleBackColor = true;
+            this.pearlFinishRadioButton.CheckedChanged += new System.EventHandler(this.pearlFinishRadioButton_CheckedChanged);
             // 
-            // customDetailRadioButton
+            // standardFinishRadioButton
             // 
-            this.customDetailRadioButton.AutoSize = true;
-            this.customDetailRadioButton.Location = new System.Drawing.Point(7, 94);
-            this.customDetailRadioButton.Name = "customDetailRadioButton";
-            this.customDetailRadioButton.Size = new System.Drawing.Size(123, 17);
-            this.customDetailRadioButton.TabIndex = 2;
-            this.customDetailRadioButton.TabStop = true;
-            this.customDetailRadioButton.Text = "Customized &Detailing";
-            this.customDetailRadioButton.UseVisualStyleBackColor = true;
+            this.standardFinishRadioButton.AutoSize = true;
+            this.standardFinishRadioButton.Location = new System.Drawing.Point(7, 20);
+            this.standardFinishRadioButton.Name = "standardFinishRadioButton";
+            this.standardFinishRadioButton.Size = new System.Drawing.Size(68, 17);
+            this.standardFinishRadioButton.TabIndex = 0;
+            this.standardFinishRadioButton.TabStop = true;
+            this.standardFinishRadioButton.Text = "S&tandard";
+            this.standardFinishRadioButton.UseVisualStyleBackColor = true;
+            this.standardFinishRadioButton.CheckedChanged += new System.EventHandler(this.standardFinishRadioButton_CheckedChanged);
             // 
             // nameLabel
             // 
@@ -158,54 +163,63 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "VB Auto Centre";
             // 
-            // textBox1
+            // carSalesTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(379, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.carSalesTextBox.Location = new System.Drawing.Point(379, 62);
+            this.carSalesTextBox.Name = "carSalesTextBox";
+            this.carSalesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.carSalesTextBox.TabIndex = 3;
+            this.carSalesTextBox.TextChanged += new System.EventHandler(this.carSalesTextBox_TextChanged);
             // 
-            // textBox2
+            // accessoriesTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(379, 102);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.accessoriesTextBox.Location = new System.Drawing.Point(379, 102);
+            this.accessoriesTextBox.Name = "accessoriesTextBox";
+            this.accessoriesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.accessoriesTextBox.TabIndex = 4;
+            this.accessoriesTextBox.Text = "$0.00";
+            this.accessoriesTextBox.TextChanged += new System.EventHandler(this.accessoriesTextBox_TextChanged);
             // 
-            // textBox3
+            // subTotalTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(379, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            this.subTotalTextBox.Location = new System.Drawing.Point(379, 142);
+            this.subTotalTextBox.Name = "subTotalTextBox";
+            this.subTotalTextBox.Size = new System.Drawing.Size(100, 20);
+            this.subTotalTextBox.TabIndex = 5;
+            this.subTotalTextBox.TextChanged += new System.EventHandler(this.subTotal_TextChanged);
             // 
-            // textBox4
+            // salesTaxTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(379, 182);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 6;
+            this.salesTaxTextBox.Location = new System.Drawing.Point(379, 182);
+            this.salesTaxTextBox.Name = "salesTaxTextBox";
+            this.salesTaxTextBox.Size = new System.Drawing.Size(100, 20);
+            this.salesTaxTextBox.TabIndex = 6;
+            this.salesTaxTextBox.TextChanged += new System.EventHandler(this.salesTaxTextBox_TextChanged);
             // 
-            // textBox5
+            // totalTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(379, 222);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 7;
+            this.totalTextBox.Location = new System.Drawing.Point(379, 222);
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalTextBox.TabIndex = 7;
+            this.totalTextBox.TextChanged += new System.EventHandler(this.totalTextBox_TextChanged);
             // 
-            // textBox6
+            // tradeTexBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(379, 262);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 8;
+            this.tradeTexBox.Location = new System.Drawing.Point(379, 262);
+            this.tradeTexBox.Name = "tradeTexBox";
+            this.tradeTexBox.Size = new System.Drawing.Size(100, 20);
+            this.tradeTexBox.TabIndex = 8;
+            this.tradeTexBox.Text = "$0.00";
+            this.tradeTexBox.TextChanged += new System.EventHandler(this.tradeTextBox_TextChanged);
             // 
-            // textBox7
+            // amountDueTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(379, 302);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 9;
+            this.amountDueTextBox.Location = new System.Drawing.Point(379, 302);
+            this.amountDueTextBox.Name = "amountDueTextBox";
+            this.amountDueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.amountDueTextBox.TabIndex = 9;
+            this.amountDueTextBox.TextChanged += new System.EventHandler(this.amountDueTextBox_TextChanged);
             // 
             // carSalesPriceLabel
             // 
@@ -215,7 +229,6 @@
             this.carSalesPriceLabel.Size = new System.Drawing.Size(82, 13);
             this.carSalesPriceLabel.TabIndex = 10;
             this.carSalesPriceLabel.Text = "C&ar Sales Price:";
-            this.carSalesPriceLabel.Click += new System.EventHandler(this.carSalesPriceLabel_Click);
             // 
             // accessoriesFinishLabel
             // 
@@ -225,7 +238,6 @@
             this.accessoriesFinishLabel.Size = new System.Drawing.Size(106, 13);
             this.accessoriesFinishLabel.TabIndex = 11;
             this.accessoriesFinishLabel.Text = "Accessories && Finish:";
-            this.accessoriesFinishLabel.Click += new System.EventHandler(this.accessoriesFinishLabel_Click);
             // 
             // subTotalLabel
             // 
@@ -235,7 +247,6 @@
             this.subTotalLabel.Size = new System.Drawing.Size(49, 13);
             this.subTotalLabel.TabIndex = 12;
             this.subTotalLabel.Text = "Subtotal:";
-            this.subTotalLabel.Click += new System.EventHandler(this.subTotalLabel_Click);
             // 
             // salesTaxLabel
             // 
@@ -254,7 +265,6 @@
             this.totalLabel.Size = new System.Drawing.Size(34, 13);
             this.totalLabel.TabIndex = 14;
             this.totalLabel.Text = "Total:";
-            this.totalLabel.Click += new System.EventHandler(this.totalLabel_Click);
             // 
             // tradeAllowanceLabel
             // 
@@ -264,7 +274,6 @@
             this.tradeAllowanceLabel.Size = new System.Drawing.Size(102, 13);
             this.tradeAllowanceLabel.TabIndex = 15;
             this.tradeAllowanceLabel.Text = "T&rade-In Allowance:";
-            this.tradeAllowanceLabel.Click += new System.EventHandler(this.tradeAllowanceLabel_Click);
             // 
             // amountDueLabel
             // 
@@ -283,6 +292,7 @@
             this.calculateButton.TabIndex = 17;
             this.calculateButton.Text = "&Calculate";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // clearButton
             // 
@@ -293,7 +303,7 @@
             this.clearButton.TabIndex = 18;
             this.clearButton.Text = "C&lear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.button2_Click);
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // exitButton
             // 
@@ -303,7 +313,7 @@
             this.exitButton.TabIndex = 19;
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.button3_Click);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // authorLabel
             // 
@@ -314,7 +324,6 @@
             this.authorLabel.Size = new System.Drawing.Size(99, 21);
             this.authorLabel.TabIndex = 20;
             this.authorLabel.Text = "Kelly McAlpine";
-            this.authorLabel.Click += new System.EventHandler(this.authorLabel_Click);
             // 
             // AutoCentreForm
             // 
@@ -333,13 +342,13 @@
             this.Controls.Add(this.subTotalLabel);
             this.Controls.Add(this.accessoriesFinishLabel);
             this.Controls.Add(this.carSalesPriceLabel);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.amountDueTextBox);
+            this.Controls.Add(this.tradeTexBox);
+            this.Controls.Add(this.totalTextBox);
+            this.Controls.Add(this.salesTaxTextBox);
+            this.Controls.Add(this.subTotalTextBox);
+            this.Controls.Add(this.accessoriesTextBox);
+            this.Controls.Add(this.carSalesTextBox);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.exteriorFinishGroupBox);
             this.Controls.Add(this.accessoriesGroupBox);
@@ -371,13 +380,13 @@
         private System.Windows.Forms.RadioButton pearlFinishRadioButton;
         private System.Windows.Forms.RadioButton standardFinishRadioButton;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox carSalesTextBox;
+        private System.Windows.Forms.TextBox accessoriesTextBox;
+        private System.Windows.Forms.TextBox subTotalTextBox;
+        private System.Windows.Forms.TextBox salesTaxTextBox;
+        private System.Windows.Forms.TextBox totalTextBox;
+        private System.Windows.Forms.TextBox tradeTexBox;
+        private System.Windows.Forms.TextBox amountDueTextBox;
         private System.Windows.Forms.Label carSalesPriceLabel;
         private System.Windows.Forms.Label accessoriesFinishLabel;
         private System.Windows.Forms.Label subTotalLabel;
