@@ -33,5 +33,40 @@ namespace VBAutoCentre
         {
 
         }
+
+        private void carSalesPriceLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accessoriesFinishLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void subTotalLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tradeAllowanceLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
