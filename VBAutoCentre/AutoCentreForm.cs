@@ -22,18 +22,17 @@ namespace VBAutoCentre
         //module level variables - 
         //objects default to null and numbers default to 0
         private RadioButton selectedRadioButton = null;
-        private CheckBox selectedCheckBox = null;
         decimal carSalesDecimal = 0, accessoriesDecimal = 0,
             subTotalDecimal = 0, totalDecimal = 0, tradeDecimal = 0, amountDueDecimal = 0;
 
         //module level constants
-        const decimal salesTaxRateDecimal = 0.15m;
-        const decimal stereoSystemDecimal = 425.76m;
-        const decimal leatherDecimal = 987.41m;
-        const decimal computerNavDecimal = 1741.23m;
-        const decimal standardDecimal = 0;
-        const decimal pearlDecimal = 345.72m;
-        const decimal customDecimal = 599.99m;
+        const decimal SALES_TAX_RATE_Decimal = 0.15m;
+        const decimal STEREO_SYSTEM_Decimal = 425.76m;
+        const decimal LEATHER_Decimal = 987.41m;
+        const decimal COMPUTER_NAV_Decimal = 1741.23m;
+        const decimal STANDARD_Decimal = 0;
+        const decimal PEARL_Decimal = 345.72m;
+        const decimal CUSTOM_Decimal = 599.99m;
 
         public AutoCentreForm()
         {
@@ -45,21 +44,17 @@ namespace VBAutoCentre
             //Have the user's attention point toward entering the car sales price first
             //Standard option is checked as it's included in the price
             standardFinishRadioButton.Checked = true;
+            accessoriesTextBox.Text = "0.00";
+            carSalesTextBox.Text = "0.00";
+            tradeTextBox.Text = "0.00";
             carSalesTextBox.Select();
             carSalesTextBox.Focus();
         }
-
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            selectedCheckBox = (CheckBox)sender;
-        }
-
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             selectedRadioButton = (RadioButton)sender;
         }
-
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
@@ -67,114 +62,123 @@ namespace VBAutoCentre
             //all options are selected, trade-in allowance (if any) 
             // then Sales Tax applied
 
-            decimal priceDecimal, taxDecimal;
+            decimal taxDecimal;
 
-            //catch if the use does not provide an input
+            //catch if the user does not provide an input in the car sales text box, 
+            //as well as if the input is invalid or out of range
             try
             {
-                //convert/cast text to numeric properties before calculations can be made 
-                priceDecimal = decimal.Parse(carSalesTextBox.Text
-                    + accessoriesTextBox.Text + subTotalTextBox.Text
-                    + salesTaxTextBox.Text + totalTextBox.Text
-                    + tradeTextBox.Text + amountDueTextBox.Text);
+                //convert/cast car sales text to numeric properties 
+                carSalesDecimal = decimal.Parse(carSalesTextBox.Text);
 
                 if (carSalesDecimal > 0)
                 {
-                    if (selectedCheckBox != null)
+                    //catch if the user does not provide an input in the trade-in allowance text box, 
+                    //as well as if the input is invalid or out of range
+                    try
                     {
-                        switch (selectedCheckBox.Name)
+                        //convert/cast trade-in allowance text to numeric properties
+                        tradeDecimal = decimal.Parse(tradeTextBox.Text);
+                        if (tradeDecimal >= 0)
                         {
-                            case "stereoCheckBox":
-                                priceDecimal = stereoSystemDecimal;
-                                break;
-                            case "leatherCheckBox":
-                                priceDecimal = leatherDecimal;
-                                break;
-                            case "computerNavCheckBox":
-                                priceDecimal = computerNavDecimal;
-                                break;
-                        }
-                        if (selectedRadioButton != null)
-                        {
+                            //add the total cost of accessories selected
+                            if (stereoCheckBox.Checked)
+                            {
+                                accessoriesDecimal = accessoriesDecimal + STEREO_SYSTEM_Decimal;
+                            }
+                            if (leatherCheckBox.Checked)
+                            {
+                                accessoriesDecimal = accessoriesDecimal + LEATHER_Decimal;
+                            }
+                            if (computerNavCheckBox.Checked)
+                            {
+                                accessoriesDecimal = accessoriesDecimal + COMPUTER_NAV_Decimal;
+                            }
+
+                            //add the total cost of accessories from above code to the finish selected
                             switch (selectedRadioButton.Name)
                             {
-                                case "standardRadioButton":
-                                    priceDecimal = standardDecimal;
+                                case "standardFinishRadioButton":
+                                    accessoriesDecimal += STANDARD_Decimal;
                                     break;
-                                case "pearlRadioButton":
-                                    priceDecimal = pearlDecimal;
+                                case "pearlFinishRadioButton":
+                                    accessoriesDecimal += PEARL_Decimal;
                                     break;
                                 case "customDetailRadioButton":
-                                    priceDecimal = customDecimal;
+                                    accessoriesDecimal += CUSTOM_Decimal;
                                     break;
                             }
+
+                            //calculate the amounts
+
+                            //Subtotal
+                            subTotalDecimal = carSalesDecimal + accessoriesDecimal;
+
+                            //Add Tax to Subtotal
+                            taxDecimal = subTotalDecimal * SALES_TAX_RATE_Decimal;
+
+                            //Total before Trade-in deduction
+                            totalDecimal = subTotalDecimal + taxDecimal;
+
+                            //Calculate Amount Due - subtract Trade-in Allowance if any
+                            amountDueDecimal = totalDecimal - tradeDecimal;
+
+                            //format and display all textbox outputs with currency
+                            accessoriesTextBox.Text = accessoriesDecimal.ToString("c");
+                            subTotalTextBox.Text = subTotalDecimal.ToString("c");
+                            salesTaxTextBox.Text = taxDecimal.ToString("c");
+                            totalTextBox.Text = totalDecimal.ToString("c");
+                            amountDueTextBox.Text = amountDueDecimal.ToString("c");
                         }
-                        //calculate the amounts
 
-                        //total of Accessories and Finish
-                        accessoriesDecimal =
-                            stereoSystemDecimal
-                            + leatherDecimal
-                            + computerNavDecimal
-                            + standardDecimal
-                            + pearlDecimal
-                            + customDecimal;
-
-                        //Subtotal
-                        subTotalDecimal = carSalesDecimal + accessoriesDecimal;
-
-                        //Add Tax to Subtotal
-                        taxDecimal = subTotalDecimal * salesTaxRateDecimal;
-
-                        //Total before Trade-in deduction
-                        taxDecimal = subTotalDecimal * salesTaxRateDecimal
-                            + subTotalDecimal;
-                        //Calculate Amount Due - subtract Trade-in Allowance if any
-                        amountDueDecimal = totalDecimal - tradeDecimal;
-
-                        //format and display
-                        carSalesTextBox.Text = carSalesDecimal.ToString("c");
-                        accessoriesTextBox.Text = accessoriesDecimal.ToString("c");
-                        subTotalTextBox.Text = subTotalDecimal.ToString("c");
-                        salesTaxTextBox.Text = taxDecimal.ToString("c");
-                        totalTextBox.Text = taxDecimal.ToString("c");
-                        tradeTextBox.Text = tradeDecimal.ToString("c");
-                        amountDueTextBox.Text = amountDueDecimal.ToString("c");
-
-                        //set other controls
-                        clearButton.Enabled = true;
-                        exitButton.Enabled = true;
+                        else
+                        {
+                            MessageBox.Show("A positive number must be entered into the Trade-in Allowance box." + 
+                                "If there is no trade-in allowance applicable, please input a 0.",
+                            "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            tradeTextBox.Select();
+                            tradeTextBox.Focus();
+                        }
+                    }
+                    catch (FormatException tradeFE)
+                    {
+                        MessageBox.Show("A positive number must be entered into the Trade-in Allowance box." +
+                                "If there is no trade-in allowance applicable, please input a 0.",
+                            "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tradeTextBox.Select();
+                        tradeTextBox.Focus();
+                    }
+                    catch (OverflowException tradeOE)
+                    {
+                        MessageBox.Show("Price value is out of range.",
+                            "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        carSalesPriceLabel.Select();
+                        carSalesTextBox.Focus();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error:  " + ex.Message, 
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
                 else
                 {
-                    MessageBox.Show("There must be a valid price listed in the Car Sales Price box.",
+                    MessageBox.Show("A positive number must be entered into the Car Sales Price box.",
                         "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    carSalesPriceLabel.Select();
+                    carSalesTextBox.Select();
                     carSalesTextBox.Focus();
                 }
             }
             catch (FormatException carSalesFE)
             {
-                if (carSalesTextBox.Text == "")
-                {
-                    MessageBox.Show("There must be a valid price listed in the Car Sales Price box.",
-                        "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    carSalesPriceLabel.Select();
-                    carSalesTextBox.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Price must be a positive number.",
-                       "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    carSalesPriceLabel.Select();
-                    carSalesTextBox.Focus();
-                }
+                MessageBox.Show("A positive number must be entered into the Car Sales Price box.",
+                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                carSalesPriceLabel.Select();
+                carSalesTextBox.Focus();
             }
             catch (OverflowException carSalesOE)
             {
-                MessageBox.Show("Price value out of range.",
+                MessageBox.Show("Price value is out of range.",
                 "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 carSalesPriceLabel.Select();
                 carSalesTextBox.Focus();
@@ -186,7 +190,6 @@ namespace VBAutoCentre
         }
 
 
-
         private void clearButton_Click(object sender, EventArgs e)
         {
             // Clear the current details on the form to start again
@@ -196,9 +199,8 @@ namespace VBAutoCentre
                 "Clear Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
 
-            if(responseDialogResult == System.Windows.Forms.DialogResult.Yes)
+            if (responseDialogResult == DialogResult.Yes)
             {
-                clearButton_Click(sender, e);
                 carSalesTextBox.Clear();
                 accessoriesTextBox.Clear();
                 subTotalTextBox.Clear();
@@ -209,11 +211,15 @@ namespace VBAutoCentre
                 stereoCheckBox.Checked = false;
                 leatherCheckBox.Checked = false;
                 computerNavCheckBox.Checked = false;
-                standardFinishRadioButton.Checked = false;
+                standardFinishRadioButton.Checked = true;
                 pearlFinishRadioButton.Checked = false;
                 customDetailRadioButton.Checked = false;
+                carSalesTextBox.Text = "0.00";
+                tradeTextBox.Text = "0.00";
+                carSalesTextBox.Select();
+                carSalesTextBox.Focus();
             }
-            
+
         }
 
         private void exitButton_Click(object sender, EventArgs e)
